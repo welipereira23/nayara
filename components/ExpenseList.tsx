@@ -17,6 +17,7 @@ import {
   MenuList,
   MenuItem,
   Icon,
+  ToastId,
 } from '@chakra-ui/react'
 import {
   MdDelete,
@@ -129,7 +130,7 @@ export default function ExpenseList({ currentDate }: ExpenseListProps) {
   const [expenses, setExpenses] = useState<Expense[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const toast = useToast()
-  const toastIdRef = useRef<string>()
+  const toastIdRef = useRef<ToastId>()
 
   useEffect(() => {
     const fetchExpenses = async () => {
@@ -264,7 +265,7 @@ export default function ExpenseList({ currentDate }: ExpenseListProps) {
                 <MenuList>
                   <MenuItem
                     icon={<Icon as={MdDelete} />}
-                    onClick={() => handleDelete(expense.id!)}
+                    onClick={() => handleDelete(expense.id!, !!expense.installments)}
                     color="red.500"
                   >
                     Excluir

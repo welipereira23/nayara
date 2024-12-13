@@ -17,6 +17,7 @@ import {
   MenuList,
   MenuItem,
   Icon,
+  ToastId,
 } from '@chakra-ui/react'
 import {
   MdDelete,
@@ -66,7 +67,7 @@ export default function IncomeList({ currentDate }: IncomeListProps) {
   const [incomes, setIncomes] = useState<Income[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const toast = useToast()
-  const toastIdRef = useRef<string>()
+  const toastIdRef = useRef<ToastId>()
 
   useEffect(() => {
     fetchIncomes()
